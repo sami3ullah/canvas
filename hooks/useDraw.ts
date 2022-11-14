@@ -65,5 +65,5 @@ export const useDraw = (onDraw: ({ctx, currentPoint, prevPoint}: Draw) => void )
     }
   }, [onDraw])
 
-  return {canvasRef, onMouseDown}
+  return {canvasRef, onMouseDown, clearCanvas}
 }

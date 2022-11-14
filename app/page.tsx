@@ -31,11 +31,20 @@ const Page: FC<pageProps> = ({}) => {
     ctx.fill()
   } 
 
-  const {canvasRef, onMouseDown} = useDraw(drawLine)
+  const {canvasRef, onMouseDown, clearCanvas} = useDraw(drawLine)
 
   return(  
     <div className='w-screen h-screen bg-white flex justify-center items-center'>
-      <SketchPicker color={pickerColor} onChange={e => setPickerColor(e.hex)} />
+      <div className='flex flex-col gap-10 pr-10'>
+        <SketchPicker color={pickerColor} onChange={e => setPickerColor(e.hex)} />
+        <button
+        type="button"
+        className='p-2 rounded-md border border-black'
+        onClick={clearCanvas}
+        >
+          Clear Canvas
+        </button>
+      </div>
       <canvas
         onMouseDown={onMouseDown}
         ref={canvasRef}  
