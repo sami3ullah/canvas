@@ -34,24 +34,27 @@ const Page: FC<pageProps> = ({}) => {
   const {canvasRef, onMouseDown, clearCanvas} = useDraw(drawLine)
 
   return(  
-    <div className='w-screen h-screen bg-[#7A2A3B] flex justify-center items-center'>
-      <div className='flex flex-col gap-10 pr-10'>
-        <HexAlphaColorPicker color={pickerColor} onChange={e => setPickerColor(e)} />
-        <button
-        type="button"
-        className='p-2 rounded-md border bg-white'
-        onClick={clearCanvas}
-        >
-          Clear Canvas
-        </button>
+    <div className='w-screen h-screen bg-[#7A2A3B] flex gap-10 flex-col justify-center items-center'>
+      <h1 className='text-5xl text-[#ffffffcc]'>Canva - A drawing app</h1>
+      <div className='flex justify-center items-center'>
+        <div className='flex flex-col gap-10 pr-10'>
+          <HexAlphaColorPicker color={pickerColor} onChange={e => setPickerColor(e)} />
+          <button
+          type="button"
+          className='p-2 rounded-md border bg-white'
+          onClick={clearCanvas}
+          >
+            Clear Canvas
+          </button>
+        </div>
+        <canvas
+          onMouseDown={onMouseDown}
+          ref={canvasRef}
+          width={900}
+          height={700}
+          className="border rounded-md bg-white"
+        />
       </div>
-      <canvas
-        onMouseDown={onMouseDown}
-        ref={canvasRef}
-        width={1000}
-        height={750}
-        className="border rounded-md bg-white"
-       />
     </div>
   ) 
 }
