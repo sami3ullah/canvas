@@ -2,8 +2,8 @@
 
 import {FC, useState} from 'react';
 import { useDraw } from '../hooks/useDraw';
-import {SketchPicker} from 'react-color'
 import {defaultColor} from '../utils/constants'
+import {HexAlphaColorPicker} from 'react-colorful';
 
 interface pageProps{
 
@@ -34,12 +34,12 @@ const Page: FC<pageProps> = ({}) => {
   const {canvasRef, onMouseDown, clearCanvas} = useDraw(drawLine)
 
   return(  
-    <div className='w-screen h-screen bg-white flex justify-center items-center'>
+    <div className='w-screen h-screen bg-[#7A2A3B] flex justify-center items-center'>
       <div className='flex flex-col gap-10 pr-10'>
-        <SketchPicker color={pickerColor} onChange={e => setPickerColor(e.hex)} />
+        <HexAlphaColorPicker color={pickerColor} onChange={e => setPickerColor(e)} />
         <button
         type="button"
-        className='p-2 rounded-md border border-black'
+        className='p-2 rounded-md border bg-white'
         onClick={clearCanvas}
         >
           Clear Canvas
@@ -47,10 +47,10 @@ const Page: FC<pageProps> = ({}) => {
       </div>
       <canvas
         onMouseDown={onMouseDown}
-        ref={canvasRef}  
-        width={750}
+        ref={canvasRef}
+        width={1000}
         height={750}
-        className="border border-black rounded-md"
+        className="border rounded-md bg-white"
        />
     </div>
   ) 
